@@ -5,16 +5,17 @@
     </div>
     <div v-if="show" class="table">
       <div class="row__head">
-        <div class="cell__head"><span @click="sortIt" class="arrow" v-if="sorted">&#8657;</span><span @click="sortIt"
-                                                                                                      class="arrow"
-                                                                                                      v-else>&#8659;</span>Stock
+        <div class="cell__head">
+          <span @click="sortIt" class="arrow" v-if="sorted">&#8657;</span>
+          <span @click="sortIt" class="arrow" v-else>&#8659;</span>Stock
         </div>
         <div class="cell__head">Current</div>
         <div class="cell__head">Change</div>
       </div>
       <div v-for="(items, i) of mocData" :key="i" class="row row__body">
-        <div v-for="(item, index) of items" :key="index" :class="items[index] < 0 ? 'red row__cell' : 'green row__cell'">
-          {{ (typeof items[index] === "number") ? items[index].toFixed(2) : items[index] }}
+        <div v-for="(item, index) of items" :key="index"
+             :class="items[index] < 0 && index === 2 ? 'red row__cell' : items[index] > 0 && index === 2 ? 'green row__cell' : 'row__cell'">
+          {{ typeof items[index] === "number" ? items[index].toFixed(2) : items[index] }}
         </div>
       </div>
     </div>
@@ -169,7 +170,7 @@ export default {
         font-size: 1.1em;
 
         .arrow {
-          color: blue;
+          color: gray;
           margin-left: -10px;
           margin-right: 10px;
           cursor: pointer;
@@ -191,8 +192,9 @@ export default {
         &.red {
           color: red;
         }
+
         &.green {
-          color: red;
+          color: green;
         }
       }
     }
