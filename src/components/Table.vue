@@ -105,7 +105,7 @@ export default {
 
 <style lang="scss" scoped>
 #wrapper {
-  width: 50%;
+  min-width: 360px;
   border: 1px solid silver;
   text-align: center;
   padding: 50px;
@@ -168,11 +168,11 @@ export default {
         padding: 5px;
         font-weight: bold;
         font-size: 1.1em;
+        min-width: 100px;
 
         .arrow {
+          margin-right: 15px;
           color: gray;
-          margin-left: -10px;
-          margin-right: 10px;
           cursor: pointer;
         }
       }
@@ -188,6 +188,7 @@ export default {
         flex: 1 1 100px;
         border: 1px solid silver;
         padding: 5px;
+        min-width: 100px;
 
         &.red {
           color: red;
